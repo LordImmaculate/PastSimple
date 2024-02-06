@@ -31,6 +31,7 @@ namespace PastSimple
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelVerb = new System.Windows.Forms.Label();
             this.labelVerbInfo = new System.Windows.Forms.Label();
             this.textBoxVerb = new System.Windows.Forms.TextBox();
@@ -150,6 +151,7 @@ namespace PastSimple
             this.Controls.Add(this.textBoxVerb);
             this.Controls.Add(this.labelVerbInfo);
             this.Controls.Add(this.labelVerb);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Past Simple Game";
