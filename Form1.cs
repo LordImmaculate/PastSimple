@@ -9,6 +9,8 @@ namespace PastSimple
     {
         string solution;
         bool audio = true;
+        int correctVerbs = 0;
+        int incorrectVerbs = 0;
         public Form1()
         {
             InitializeComponent();
@@ -141,6 +143,7 @@ namespace PastSimple
         }
         void checkVerb()
         {
+            
             if (textBoxVerb.Text == solution)
             {
                 labelCorrect.Visible = true;
@@ -149,7 +152,10 @@ namespace PastSimple
                 labelSolution.Visible = false;
                 textBoxVerb.Text = "";
                 soundPlayer("correctSound.wav");
+                correctVerbs++;
+                toolStripLabelCorrect.Text = "Correct: " + correctVerbs;
                 randomVerb();
+
             }
             else
             {
@@ -159,6 +165,8 @@ namespace PastSimple
                 labelSolution.Visible = true;
                 labelSolution.Text = "The correct answer is: " + solution;
                 textBoxVerb.Text = "";
+                incorrectVerbs++;
+                toolStripLabelIncorrect.Text = "Incorrect: " + incorrectVerbs;
             }
         }
         private void textBoxVerb_KeyDown(object sender, KeyEventArgs e)
@@ -174,8 +182,8 @@ namespace PastSimple
         {
             if (audio)
             {
-
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+                System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer();
+                System.Media.SoundPlayer player = soundPlayer;
                 player.SoundLocation = "C:/Windows/Media/tada.wav";
                 player.Play();
             }
@@ -186,12 +194,14 @@ namespace PastSimple
             if (audio)
             {
                 audio = false;
-                toolStripButtonMute.Image = PastSimple.Properties.Resources.unmuted;
+                toolStripButtonMute.Image = PastSimple.Properties.Resources.muted;
+                toolStripButtonMute.Text = "Unmute Audio";
             }
             else
             {
                 audio = true;
-                toolStripButtonMute.Image = PastSimple.Properties.Resources.muted;
+                toolStripButtonMute.Image = PastSimple.Properties.Resources.unmuted;
+                toolStripButtonMute.Text = "Mute Audio";
             }
         }
     }
